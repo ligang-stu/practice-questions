@@ -9,6 +9,7 @@ typedef struct {
 	size_t size;
 }Stack;
 
+//初始化栈
 void initStack(Stack* stack, size_t capacity)
 {
 	stack->data = (type*)malloc(sizeof(type));
@@ -16,6 +17,7 @@ void initStack(Stack* stack, size_t capacity)
 	stack->size = 0;
 }
 
+//入栈
 void pushStack(Stack* stack, type element)
 {
 	if (stack->capacity == stack->size)
@@ -33,27 +35,32 @@ void pushStack(Stack* stack, type element)
 	stack->size++;
 }
 
+//出栈
 void popStack(Stack* stack)
 {
 	if (stack->size == 0)
 	{
 		return 1;
 	}
+	printf("\n元素 %d 出栈\n",stack->data[stack->size-1]);
 	stack->size--;
 }
 
+//销毁栈
 void destoryStack(Stack* stack) {
 	free(stack->data);
 	stack->size = 0;
 	stack->capacity = 0;
 }
 
+//显示栈元素
 void PrintStack(Stack* stack) {
-	printf("\n栈的长度为：%zd", stack->size);
-	printf("\n栈内元素为：");
+	printf("栈的长度为：%zd\n", stack->size);
+	printf("栈内元素为：");
 	for (size_t i = 0; i < stack->size; i++) {
 		printf("%d ", stack->data[i]);
 	}
+	printf("\n");
 }
 int main() {
 	Stack stack;
